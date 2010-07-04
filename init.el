@@ -1,10 +1,16 @@
 ;; init.el
 
-(add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(require 'cl)
 
-(load-file "libs.el")
+(defvar emacs-root "~/.emacs.d/")
+
+(labels ((add-path (p)
+		   (add-to-list 'load-path
+				(concat emacs-root p))))
+  (add-path "lisp")
+  (add-path "site-lisp")
+)
+(add-to-list 'load-path emacs-root)
 
 ;; lua-mode
 (setq auto-mode-alist 
