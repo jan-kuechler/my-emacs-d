@@ -38,21 +38,9 @@
 (require 'slime)
 (slime-setup)
 
-;; window hopping
-(defun other-window-backward (n)
-  "Select n-th prev. window."
-  (interactive "p")
-  (other-window (- n)))
-
-;; keybindings
-(load-library "keys")
+(load-library "utils")  ; some litle utility functions
+(load-library "keys")   ; Keybindings
+(load-library "config") ; Configuration
 
 (defalias 'qr 'query-replace)
 
-;; Disable toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-;; Disable startup screen
-(custom-set-variables
- '(inhibit-startup-screen t))
-(custom-set-faces)
