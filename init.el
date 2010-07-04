@@ -20,7 +20,7 @@
 ;; line numers
 (require 'linum+)
 
-;; auto load linum-mode for C(++) and Lua files
+;; auto load linum-mode in some specific modes
 
 (add-hook 'c-mode-common-hook 'linum-mode)
 (add-hook 'lua-mode-hook 'linum-mode)
@@ -41,6 +41,3 @@
 (load-library "utils")  ; some litle utility functions
 (load-library "keys")   ; Keybindings
 (load-library "config") ; Configuration
-
-(defalias 'qr 'query-replace)
-
