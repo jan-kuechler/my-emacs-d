@@ -9,36 +9,34 @@
 				(concat emacs-root p))))
   (add-path "lisp")
   (add-path "site-lisp")
+  (add-path "site-lisp/autocomplete")
+  (add-path "site-lisp/slime")
 )
-(add-to-list 'load-path emacs-root)
 
 ;; lua-mode
-(setq auto-mode-alist 
-      (cons 
-       '("\\.lua$" . lua-mode)
-       auto-mode-alist))
-
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 
 ;; line numers
 (require 'linum+)
 
 ;; auto load linum-mode for C(++) and Lua files
-(add-hook 'c-mode-common-hook
-	  (lambda ()
-	    (linum-mode)
-	    ))
 
-(add-hook 'lua-mode-hook
-	  (lambda ()
-	    (linum-mode)
-	    ))
+(add-hook 'c-mode-common-hook 'linum-mode)
+(add-hook 'lua-mode-hook 'linum-mode)
+(add-hook 'emacs-lisp-mode-hook 'linum-mode)
 
 ;; auto-complete
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-listp/autocomplete/ac-dict")
 (ac-config-default)
+
+;; SLIME
+
+(setq inferior-lisp-program "c:/tools/LispBox/CLISP/RunCLISP.bat") ; your Lisp system
+(require 'slime)
+(slime-setup)
 
 ;; window hopping
 (defun other-window-backward (n)
@@ -47,15 +45,7 @@
   (other-window (- n)))
 
 ;; keybindings
-
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-q" 'kill-region)
-(global-set-key "\C-z" 'undo)
-
-(global-set-key [(M-down)] 'other-window)
-(global-set-key [(M-up)] 'other-window-backward)
-
-(global-set-key [f5] 'call-last-kbd-macro)
+(load-library "keys")
 
 (defalias 'qr 'query-replace)
 
