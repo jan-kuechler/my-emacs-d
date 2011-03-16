@@ -8,3 +8,5 @@
 (global-set-key [(M-up)] 'other-window-backward)
 
 (global-set-key [f5] 'call-last-kbd-macro)
+
+(global-set-key [f7] 'recompile)
