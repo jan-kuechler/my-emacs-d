@@ -8,3 +8,6 @@
 (global-set-key [(M-up)] 'other-window-backward)
 
 (global-set-key [f5] 'call-last-kbd-macro)
+
+(global-set-key "\C-c \C-c" 'copy-region-as-kill)
+(global-set-key "\C-v" 'yank)
