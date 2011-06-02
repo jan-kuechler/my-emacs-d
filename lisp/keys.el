@@ -11,3 +11,6 @@
 
 (global-set-key "\C-c \C-c" 'copy-region-as-kill)
 (global-set-key "\C-v" 'yank)
+
+(global-set-key [f7] 'recompile)
+
